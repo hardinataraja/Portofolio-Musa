@@ -1,194 +1,450 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio | Musa Ababil</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portofolio Musa Ababil, Freelance Web Developer fokus website bisnis, UMKM, dan sistem web dengan admin panel.">
+<title>Portofolio | Musa Ababil</title>
 
-        body {
-            background-color: #f4f7f6;
-            color: #333;
-            line-height: 1.6;
-        }
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        header {
-            background: #2c3e50;
-            color: white;
-            padding: 3rem 1rem;
-            text-align: center;
-        }
+<style>
+:root{
+    --primary:#00c6ff;
+    --secondary:#0072ff;
+    --accent:#f9d423;
+    --dark:#0f172a;
+    --glass:rgba(255,255,255,0.08);
+    --border:rgba(255,255,255,0.15);
+}
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
 
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid white;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
+body{
+    background:
+        radial-gradient(circle at top, #1e293b, #020617);
+    color:#e5e7eb;
+    line-height:1.7;
+    overflow-x:hidden;
+}
 
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
+/* ================= HEADER ================= */
+header{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:2rem;
+    position:relative;
+}
 
-        section {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+header::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 30% 30%, rgba(0,198,255,.15), transparent 40%),
+        radial-gradient(circle at 70% 60%, rgba(249,212,35,.12), transparent 45%);
+    z-index:-1;
+}
 
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-        }
+.profile-img{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid var(--primary);
+    box-shadow:0 0 40px rgba(0,198,255,.6);
+    animation:float 6s ease-in-out infinite;
+}
 
-        .job-item, .project-item {
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
-            border-left: 3px solid #ecf0f1;
-        }
+@keyframes float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-12px); }
+}
 
-        .job-title {
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #2980b9;
-        }
+header h1{
+    font-size:3rem;
+    margin-top:1.5rem;
+    font-weight:700;
+    background:linear-gradient(90deg,var(--primary),var(--accent));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
 
-        .company {
-            font-style: italic;
-            color: #7f8c8d;
-        }
+header p{
+    opacity:.85;
+    font-size:1.1rem;
+}
 
-        .duration {
-            font-size: 0.9rem;
-            color: #95a5a6;
-        }
+/* ================= CONTAINER ================= */
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:3rem 1.5rem;
+}
 
-        .project-link, .contact-link {
-            display: inline-block;
-            margin-top: 0.5rem;
-            color: #3498db;
-            text-decoration: none;
-            font-weight: 500;
-        }
+/* ================= GLASS CARD ================= */
+section{
+    background:var(--glass);
+    backdrop-filter:blur(14px);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:2.2rem;
+    margin-bottom:2.5rem;
+    transform:translateY(40px);
+    opacity:0;
+    transition:.8s ease;
+}
 
-        .contact-link {
-            background-color: #25d366;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin-top: 1rem;
-        }
+section.show{
+    transform:translateY(0);
+    opacity:1;
+}
 
-        .contact-link:hover {
-            background-color: #128c7e;
-            text-decoration: none;
-        }
+h2{
+    font-size:1.1rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:1.5rem;
+}
 
-        .project-link:hover {
-            text-decoration: underline;
-        }
+/* ================= LIST ITEM ================= */
+.job-item,.project-item{
+    padding-left:1rem;
+    border-left:3px solid var(--primary);
+    margin-bottom:1.6rem;
+    transition:.3s;
+}
 
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
-    </style>
+.job-item:hover,.project-item:hover{
+    transform:translateX(6px);
+}
+
+.job-title{
+    font-weight:600;
+    font-size:1.1rem;
+    color:#e5e7eb;
+}
+
+.company{
+    opacity:.75;
+    font-size:.95rem;
+}
+
+.duration{
+    font-size:.85rem;
+    opacity:.6;
+}
+
+/* ================= LINK ================= */
+.project-link{
+    display:inline-block;
+    margin-top:.5rem;
+    color:var(--primary);
+    text-decoration:none;
+    position:relative;
+}
+
+.project-link::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-4px;
+    width:0;
+    height:2px;
+    background:linear-gradient(90deg,var(--primary),var(--accent));
+    transition:.3s;
+}
+
+.project-link:hover::after{
+    width:100%;
+}
+
+/* ================= CTA ================= */
+.contact-link{
+    display:inline-block;
+    margin-top:1.2rem;
+    padding:12px 28px;
+    border-radius:999px;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    box-shadow:0 0 25px rgba(0,198,255,.5);
+    transition:.3s;
+}
+
+.contact-link:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 40px rgba(0,198,255,.8);
+}
+
+/* ================= FOOTER ================= */
+footer{
+    text-align:center;
+    padding:3rem 1rem;
+    opacity:.6;
+    font-size:.9rem;
+}
+  
+  .badge{
+  display:inline-block;
+  padding:4px 10px;
+  margin-right:6px;
+  margin-bottom:6px;
+  font-size:.75rem;
+  border-radius:999px;
+  background:rgba(0,198,255,.15);
+  color:#7dd3fc;
+  border:1px solid rgba(0,198,255,.3);
+}
+
+.badge-accent{
+  background:rgba(249,212,35,.15);
+  color:#fde047;
+  border:1px solid rgba(249,212,35,.4);
+}
+</style>
 </head>
+
 <body>
 
 <header>
-    <img src="https://bdudnutyshaqxhorsgdk.supabase.co/storage/v1/object/public/upload/1768911669733_1000142737.jpg" alt="Musa Ababil" class="profile-img">
+    <img src="https://i.postimg.cc/3rZ9hYZX/1760915549057.png" class="profile-img" alt="Musa Ababil">
     <h1>Musa Ababil</h1>
-    <p>Sales Specialist & Web Developer</p>
+    <p>
+        Freelance Web Developer<br>
+        <span style="opacity:.8">Fokus Website Bisnis & UMKM yang Fungsional dan Mudah Digunakan</span>
+    </p>
 </header>
 
 <div class="container">
 
-    <section>
-        <h2>Profil Profesional</h2>
-        <p>Seorang profesional yang berorientasi pada target dengan pengalaman luas di bidang Marketing dan Manajemen Operasional. Memiliki keahlian dalam strategi penjualan (D2D & Store) serta memiliki kemampuan teknis dalam pengembangan web.</p>
-    </section>
+<section>
+<h2>Profil Profesional</h2>
+<p>
+Saya adalah <strong>Freelance Web Developer</strong> dengan latar belakang bisnis dan pemasaran.
+Berpengalaman membantu pemilik usaha membangun website yang tidak hanya tampil profesional,
+tetapi juga <strong>mudah digunakan, cepat, dan relevan dengan kebutuhan bisnis</strong>.
+</p>
 
-    <section>
-        <h2>Kontak</h2>
-        <p>Hubungi saya untuk kolaborasi atau peluang kerja melalui WhatsApp:</p>
-        <a href="https://wa.me/6282111887939" class="contact-link" target="_blank">Chat via WhatsApp</a>
-    </section>
+<p>
+Terbiasa berkomunikasi langsung dengan klien non-teknis, menerjemahkan kebutuhan bisnis
+menjadi solusi website yang praktis dan efisien.
+</p>
+</section>
+  
+  <section>
+<h2>Kenapa Bekerja Dengan Saya?</h2>
+<ul style="padding-left:1.2rem; line-height:1.9">
+<li>Paham kebutuhan bisnis, bukan hanya teknis</li>
+<li>Komunikasi jelas & responsif</li>
+<li>Fokus pada solusi yang realistis dan berguna</li>
+<li>Cocok untuk UMKM, personal brand, dan project internal</li>
+<li>Bisa maintenance & pengembangan bertahap</li>
+</ul>
+</section>
+  
+  <section>
+<h2>Keahlian & Teknologi</h2>
 
-    <section>
-        <h2>Pengalaman Kerja</h2>
-        <div class="job-item">
-            <div class="job-title">Marketing Manager</div>
-            <div class="company">CV Boenga Sejahtera Bersama</div>
-            <div class="duration">1 Tahun</div>
-        </div>
-        <div class="job-item">
-            <div class="job-title">Sales Manager</div>
-            <div class="company">Metrox Dinamika</div>
-            <div class="duration">1 Tahun</div>
-        </div>
-        <div class="job-item">
-            <div class="job-title">Supervisor Store</div>
-            <div class="company">PT Metrox Dinamika (Shaga)</div>
-            <div class="duration">2 Tahun</div>
-        </div>
-        <div class="job-item">
-            <div class="job-title">Marketing Store</div>
-            <div class="company">PT Global Fortuna (Shaga), PT.SSB (Advance), Aibi Indonesia</div>
-            <div class="duration">Total 2 Tahun 3 Bulan</div>
-        </div>
-        <div class="job-item">
-            <div class="job-title">Marketing Door to Door (D2D)</div>
-            <div class="company">CV SAI Kediri & CV NSI Mojokerto</div>
-            <div class="duration">2 Tahun</div>
-        </div>
-        <div class="job-item">
-            <div class="job-title">Driver & Mitra Transportasi</div>
-            <div class="company">PT. Jayamahe & Mitra Gocar</div>
-            <div class="duration">3 Tahun</div>
-        </div>
-    </section>
+<p><strong>Web Development</strong></p>
+<ul style="padding-left:1.2rem">
+<li>HTML, CSS, JavaScript</li>
+<li>React JS (Frontend)</li>
+<li>Firebase (Auth & Firestore)</li>
+<li>Responsive Design (Mobile Friendly)</li>
+<li>Basic SEO & Performance</li>
+</ul>
 
-    <section>
-        <h2>Project Web Development</h2>
-        <div class="project-item">
-            <div class="job-title">Freelance Web Developer</div>
-            <p>Mengembangkan dan mengelola situs web fungsional untuk klien:</p>
-            <a href="http://sicakrabali.net" class="project-link" target="_blank">→ sicakrabali.net</a><br>
-            <a href="http://onegadgetbali.com" class="project-link" target="_blank">→ onegadgetbali.com</a><br>
-            <a href="http://gisgadget.com" class="project-link" target="_blank">→ gisgadget.com</a>
-        </div>
-    </section>
+<p style="margin-top:1rem"><strong>Tools & Deployment</strong></p>
+<ul style="padding-left:1.2rem">
+<li>Vercel & Netlify</li>
+<li>Git & GitHub</li>
+<li>Basic UI/UX Optimization</li>
+</ul>
+</section>
+  
+ <section>
+<h2>Client Projects (Custom Web System)</h2>
+
+<div class="project-item">
+  <div class="job-title">sicakrabali.net</div>
+
+  <p>
+  Sistem web berbasis <strong>React JS</strong> dengan <strong>admin panel</strong> untuk
+  pengelolaan dan pencarian data laporan secara cepat.
+  Menggunakan <strong>Firebase</strong> sebagai autentikasi dan database.
+  Dirancang untuk penggunaan internal dan publik dengan fokus pada
+  kecepatan, kemudahan akses, dan keakuratan data.
+  </p>
+
+  <div style="margin-top:.5rem">
+    <span class="badge">React</span>
+    <span class="badge">Firebase</span>
+    <span class="badge">Admin Panel</span>
+  </div>
+
+  <a href="http://sicakrabali.net" target="_blank" class="project-link">
+    Lihat Website →
+  </a>
+</div>
+
+<div class="project-item">
+  <div class="job-title">onegadgetbali.com</div>
+
+  <p>
+  Website bisnis dan katalog produk dengan <strong>dashboard admin</strong>
+  untuk pengelolaan konten dan produk.
+  Dibangun menggunakan <strong>React</strong> dan <strong>Firebase</strong>,
+  dengan desain responsif serta alur navigasi yang sederhana
+  agar mudah digunakan oleh pemilik usaha.
+  </p>
+
+  <div style="margin-top:.5rem">
+    <span class="badge">React</span>
+    <span class="badge">Firebase</span>
+    <span class="badge">Admin Panel</span>
+  </div>
+
+  <a href="http://onegadgetbali.com" target="_blank" class="project-link">
+    Lihat Website →
+  </a>
+</div>
+
+<div class="project-item">
+  <div class="job-title">gisgadget.com</div>
+
+  <p>
+  Website informasi produk dan layanan dengan sistem admin
+  untuk update konten secara mandiri.
+  Fokus pada performa ringan, tampilan profesional,
+  serta kemudahan pengelolaan oleh pemilik bisnis.
+  </p>
+
+  <div style="margin-top:.5rem">
+    <span class="badge">React</span>
+    <span class="badge">Firebase</span>
+    <span class="badge">Admin Panel</span>
+  </div>
+
+  <a href="http://gisgadget.com" target="_blank" class="project-link">
+    Lihat Website →
+  </a>
+</div>
+
+</section>
+  
+  <section>
+<h2>Personal Project (Product MVP)</h2>
+
+<div class="project-item">
+  <div class="job-title">RajaOrder</div>
+
+  <p>
+  Web aplikasi sistem pemesanan berbasis <strong>WhatsApp</strong>
+  yang dikembangkan sebagai <strong>Product MVP</strong>.
+  Dirancang untuk membantu UMKM menerima order secara cepat
+  tanpa aplikasi tambahan.
+  </p>
+
+  <p>
+  Memiliki halaman admin untuk mengelola produk, harga, pengaturan merchant dan tampilan tema toko.
+  Dibangun menggunakan <strong>HTML, CSS, dan JavaScript</strong>
+  dengan fokus pada alur bisnis, kemudahan penggunaan,
+  dan validasi kebutuhan pasar sebelum pengembangan lanjutan.
+  </p>
+
+  <div style="margin-top:.5rem">
+    <span class="badge">HTML</span>
+    <span class="badge">JavaScript</span>
+    <span class="badge">Admin Panel</span>
+    <span class="badge badge-accent">MVP</span>
+  </div>
+
+  <a href="https://raja-kudapan.vercel.app/" target="_blank" class="project-link">
+    Website User →
+  </a>
+  <br>
+  <a href="https://admin-mcso.vercel.app/" target="_blank" class="project-link">
+    Admin Panel →
+  </a>
+</div>
+
+</section>
+  
+  
+  
+
+
+  
+  <section>
+<h2>Latar Belakang Profesional</h2>
+<p>
+Memiliki pengalaman di bidang pemasaran, manajemen penjualan,
+dan operasional bisnis.
+Pemahaman ini membantu saya dalam merancang website
+yang relevan dengan alur kerja, target pasar, dan kebutuhan nyata klien.
+</p>
+</section>
+  
+  <section>
+<h2>Kerja Sama & Project</h2>
+
+<p>
+Terbuka untuk kerja sama <strong>freelance</strong> atau <strong>project-based</strong>
+seperti website bisnis, UMKM, landing page,
+atau sistem web sederhana sesuai kebutuhan.
+</p>
+
+<div style="margin-top:1.5rem; display:flex; flex-wrap:wrap; gap:12px;">
+  
+  <a href="https://wa.me/6282111887939" target="_blank" class="contact-link">
+    Diskusi via WhatsApp
+  </a>
+
+  <a href="mailto:hardinataraja@gmail.com" class="contact-link"
+     style="background:linear-gradient(135deg,#64748b,#334155); box-shadow:0 0 20px rgba(148,163,184,.5);">
+    Diskusi via Email
+  </a>
+
+</div>
+
+<p style="margin-top:1.2rem; font-size:.9rem; opacity:.7">
+Respon cepat dan komunikasi jelas untuk memastikan kebutuhan project tersampaikan dengan baik.
+</p>
+
+</section>
 
 </div>
 
 <footer>
-    &copy; 2024 Musa Ababil. All rights reserved.
+    © 2024–2026 Musa Ababil — Portfolio
 </footer>
+
+<script>
+/* Scroll Reveal */
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+},{threshold:0.2});
+
+sections.forEach(sec=>observer.observe(sec));
+</script>
 
 </body>
 </html>
