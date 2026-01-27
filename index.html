@@ -262,6 +262,25 @@ footer{
     color:#e5e7eb;
     white-space:nowrap;
 }
+    
+    /* ===== NAME TYPING + UNDERLINE ===== */
+.name{
+  font-size:3rem;
+  font-weight:700;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  background:linear-gradient(90deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+
+
+
+
+
 </style>
 </head>
 
@@ -269,7 +288,10 @@ footer{
 
 <header>
     <img src="https://i.postimg.cc/NGR47Vf3/1768919110812.png" class="profile-img" alt="Musa Ababil">
-    <h1>Musa Ababil</h1>
+    <h1 class="name">
+  <span id="first-name"></span>
+  <span id="last-name"></span>
+</h1>
     <p>
         Freelance Web Developer<br>
         <span style="opacity:.8">Fokus Website Bisnis & UMKM yang Fungsional dan Mudah Digunakan</span>
@@ -571,7 +593,38 @@ const observer = new IntersectionObserver(entries=>{
 },{threshold:0.2});
 
 sections.forEach(sec=>observer.observe(sec));
+    
+/* ===== TYPING EFFECT ===== */
+const firstNameText = "Musa";
+const lastNameText  = "Ababil";
+
+const firstEl = document.getElementById("first-name");
+const lastEl  = document.getElementById("last-name");
+
+let i = 0;
+let j = 0;
+
+function typeFirst(){
+  if(i < firstNameText.length){
+    firstEl.textContent += firstNameText[i];
+    i++;
+    setTimeout(typeFirst, 120);
+  }else{
+    setTimeout(typeLast, 400);
+  }
+}
+
+function typeLast(){
+  if(j < lastNameText.length){
+    lastEl.textContent += lastNameText[j];
+    j++;
+    setTimeout(typeLast, 140);
+  }
+}
+
+window.addEventListener("load", typeFirst);
 </script>
+
 
 </body>
 </html>
