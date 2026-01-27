@@ -231,6 +231,37 @@ footer{
     transform: translateY(-2px);
     box-shadow: 0 12px 28px rgba(37, 211, 102, 0.45);
 }
+    /* ===== PROJECT HEADER (PILL + LOGO) ===== */
+.project-header{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:8px 16px;
+    border-radius:999px;
+    background:linear-gradient(
+        135deg,
+        rgba(0,198,255,.18),
+        rgba(249,212,35,.12)
+    );
+    border:1px solid rgba(255,255,255,.15);
+    margin-bottom:.6rem;
+}
+
+.project-logo{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    object-fit:cover;
+    background:#020617;
+    border:1px solid rgba(255,255,255,.2);
+}
+
+.project-title{
+    font-weight:600;
+    font-size:1.05rem;
+    color:#e5e7eb;
+    white-space:nowrap;
+}
 </style>
 </head>
 
@@ -301,9 +332,13 @@ menjadi solusi website yang praktis dan efisien.
   
  <section>
 <h2>Client Projects (Custom Web System)</h2>
-
+     
 <div class="project-item">
-  <div class="job-title">sicakrabali.net</div>
+
+<div class="project-header">
+  <img src="https://thumbs2.imgbox.com/ee/01/0glCpU9W_t.png?text=LOGO" class="project-logo">
+  <div class="project-title">sicakrabali.net</div>
+</div>
 
   <p>
   Sistem web berbasis <strong>React JS</strong> dengan <strong>admin panel</strong> untuk
@@ -325,7 +360,10 @@ menjadi solusi website yang praktis dan efisien.
 </div>
 
 <div class="project-item">
-  <div class="job-title">onegadgetbali.com</div>
+  <div class="project-header">
+  <img src="https://thumbs2.imgbox.com/1f/4d/Fbg1xzfb_t.jpg?text=LOGO" class="project-logo">
+  <div class="project-title">onegadgetbali.com</div>
+</div>
 
   <p>
   Website bisnis dan katalog produk dengan <strong>dashboard admin</strong>
@@ -347,7 +385,10 @@ menjadi solusi website yang praktis dan efisien.
 </div>
 
 <div class="project-item">
-  <div class="job-title">gisgadget.com</div>
+  <div class="project-header">
+  <img src="https://thumbs2.imgbox.com/f8/a1/mX0wveSk_t.jpg?text=LOGO" class="project-logo">
+  <div class="project-title">gisgadget.com</div>
+</div>
 
   <p>
   Website informasi produk dan layanan dengan sistem admin
@@ -366,7 +407,35 @@ menjadi solusi website yang praktis dan efisien.
     Lihat Website →
   </a>
 </div>
+     
+<div class="project-item">
 
+  <div class="project-header">
+    <img 
+      src="https://thumbs2.imgbox.com/fd/29/O7FvkVQq_t.png?text=LOGO"
+      alt="AuroraSky Logo"
+      class="project-logo"
+    >
+    <div class="project-title">auroraskyservice.com</div>
+  </div>
+
+  <p>
+    Website bisnis dan <strong>service management system</strong> untuk layanan
+    legal, visa, dan properti. Dibangun sebagai <strong>web application</strong>
+    dengan <strong>admin panel</strong>.
+  </p>
+
+  <div style="margin-top:.5rem">
+    <span class="badge">React</span>
+    <span class="badge">Firebase</span>
+    <span class="badge">Admin Panel</span>
+  </div>
+
+  <a href="https://auroraskyservice.com" target="_blank" class="project-link">
+    Lihat Website →
+  </a>
+
+</div>
 </section>
     
  <p style="max-width:720px; margin-bottom:1.5rem; opacity:.8">
