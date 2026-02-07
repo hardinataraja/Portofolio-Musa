@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio of Musa Ababil, Freelance Web Developer focusing on business websites, MSMEs, and web systems with admin panels.">
+<title>Portfolio | Musa Ababil</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* CSS tetap sama dengan index.html */
+:root{ --primary:#00c6ff; --secondary:#0072ff; --accent:#f9d423; --dark:#0f172a; --glass:rgba(255,255,255,0.08); --border:rgba(255,255,255,0.15); }
+*{ margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+body{ background: radial-gradient(circle at top, #1e293b, #020617); color:#e5e7eb; line-height:1.7; overflow-x:hidden; }
+header{ min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:2rem; position:relative; }
+header::before{ content:""; position:absolute; inset:0; background: radial-gradient(circle at 30% 30%, rgba(0,198,255,.15), transparent 40%), radial-gradient(circle at 70% 60%, rgba(249,212,35,.12), transparent 45%); z-index:-1; }
+.profile-img{ width:180px; height:180px; border-radius:50%; object-fit:cover; border:4px solid var(--primary); box-shadow:0 0 40px rgba(0,198,255,.6); animation:float 6s ease-in-out infinite; }
+@keyframes float{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-12px); } }
+header h1{ font-size:3rem; margin-top:1.5rem; font-weight:700; background:linear-gradient(90deg,var(--primary),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+header p{ opacity:.85; font-size:1.1rem; }
+.container{ max-width:1000px; margin:auto; padding:3rem 1.5rem; }
+section{ background:var(--glass); backdrop-filter:blur(14px); border:1px solid var(--border); border-radius:18px; padding:2.2rem; margin-bottom:2.5rem; transform:translateY(40px); opacity:0; transition:.8s ease; }
+section.show{ transform:translateY(0); opacity:1; }
+h2{ font-size:1.1rem; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:1.5rem; }
+.job-item,.project-item{ padding-left:1rem; border-left:3px solid var(--primary); margin-bottom:1.6rem; transition:.3s; }
+.job-item:hover,.project-item:hover{ transform:translateX(6px); }
+.project-link{ display:inline-block; margin-top:.5rem; color:var(--primary); text-decoration:none; position:relative; }
+.project-link::after{ content:""; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:linear-gradient(90deg,var(--primary),var(--accent)); transition:.3s; }
+.project-link:hover::after{ width:100%; }
+.contact-link{ display:inline-block; margin-top:1.2rem; padding:12px 28px; border-radius:999px; background:linear-gradient(135deg,var(--primary),var(--secondary)); color:white; text-decoration:none; font-weight:600; box-shadow:0 0 25px rgba(0,198,255,.5); transition:.3s; }
+footer{ text-align:center; padding:3rem 1rem; opacity:.6; font-size:.9rem; }
+.badge{ display:inline-block; padding:4px 10px; margin-right:6px; margin-bottom:6px; font-size:.75rem; border-radius:999px; background:rgba(0,198,255,.15); color:#7dd3fc; border:1px solid rgba(0,198,255,.3); }
+.badge-accent{ background:rgba(249,212,35,.15); color:#fde047; border:1px solid rgba(249,212,35,.4); }
+.wa-hero { display: inline-block; margin-top: 1.5rem; padding: 12px 26px; background: linear-gradient(135deg, #25d366, #1ebe5d); color: #fff; font-weight: 600; border-radius: 30px; text-decoration: none; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35); transition: all 0.3s ease; }
+.project-header{ display:inline-flex; align-items:center; gap:12px; padding:8px 16px; border-radius:999px; background:linear-gradient(135deg, rgba(0,198,255,.18), rgba(249,212,35,.12)); border:1px solid rgba(255,255,255,.15); margin-bottom:.6rem; }
+.project-logo{ width:36px; height:36px; border-radius:50%; object-fit:cover; background:#020617; border:1px solid rgba(255,255,255,.2); }
+.project-title{ font-weight:600; font-size:1.05rem; color:#e5e7eb; white-space:nowrap; }
+.name{ font-size:3rem; font-weight:700; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; background:linear-gradient(90deg,var(--primary),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+/* LANG TOGGLE STYLE */
+.lang-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    padding: 5px;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    display: flex;
+    gap: 5px;
+}
+.lang-btn {
+    padding: 6px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.3s;
+}
+.lang-btn.active {
+    background: var(--primary);
+    box-shadow: 0 0 15px rgba(0,198,255,0.4);
+}
+</style>
+</head>
+
+<body>
+
+<div class="lang-switch">
+    <a href="index.html" class="lang-btn">ID</a>
+    <a href="english.html" class="lang-btn active">EN</a>
+</div>
+
+<header>
+    <img src="https://thumbs2.imgbox.com/09/d2/DZIgpGwZ_t.jpg" class="profile-img" alt="Musa Ababil">
+    <h1 class="name">
+        <span id="first-name"></span>
+        <span id="last-name"></span>
+    </h1>
+    <p>
+        Freelance Web Developer<br>
+        <span style="opacity:.8">Focusing on Functional and User-Friendly Business & MSME Websites</span>
+        <a href="https://wa.me/6282111887939?text=Hi%20Musa,%20I'm%20interested%20in%20discussing%20a%20website%20project." target="_blank" class="wa-hero">
+          💬 Let's Talk via WhatsApp
+        </a>
+    </p>
+</header>
+
+<div class="container">
+
+<section>
+<h2>Professional Profile</h2>
+<p>
+I am a <strong>Freelance Web Developer</strong> with a background in business and marketing.
+Experienced in helping business owners build websites that are not only professional in appearance
+but also <strong>user-friendly, fast, and relevant to business needs</strong>.
+</p>
+<p>
+Accustomed to communicating directly with non-technical clients, translating business requirements
+into practical and efficient website solutions.
+</p>
+</section>
+  
+<section>
+<h2>Why Work With Me?</h2>
+<ul style="padding-left:1.2rem; line-height:1.9">
+<li>Understand business needs, not just technicalities</li>
+<li>Clear & responsive communication</li>
+<li>Focus on realistic and useful solutions</li>
+<li>Ideal for MSMEs, personal brands, and internal projects</li>
+<li>Capable of maintenance & phased development</li>
+</ul>
+</section>
+  
+<section>
+<h2>Skills & Technology</h2>
+<p><strong>Web Development</strong></p>
+<ul style="padding-left:1.2rem">
+<li>HTML, CSS, JavaScript</li>
+<li>React JS (Frontend)</li>
+<li>Firebase (Auth & Firestore)</li>
+<li>Responsive Design (Mobile Friendly)</li>
+<li>Basic SEO & Performance</li>
+</ul>
+<p style="margin-top:1rem"><strong>Tools & Deployment</strong></p>
+<ul style="padding-left:1.2rem">
+<li>Vercel & Netlify</li>
+<li>Git & GitHub</li>
+<li>Basic UI/UX Optimization</li>
+</ul>
+</section>
+ 
+<section>
+<h2>Client Projects (Custom Web System)</h2>
+     
+<div class="project-item">
+<div class="project-header">
+  <img src="https://thumbs2.imgbox.com/ee/01/0glCpU9W_t.png?text=LOGO" class="project-logo">
+  <div class="project-title">sicakrabali.net</div>
+</div>
+  <p>
+  A <strong>React JS</strong> based web system with an <strong>admin panel</strong> for
+  fast report data management and searching.
+  Uses <strong>Firebase</strong> for authentication and database.
+  Designed for internal and public use with a focus on speed and accuracy.
+  </p>
+  <div style="margin-top:.5rem">
+    <span class="badge">React</span>
+    <span class="badge">Firebase</span>
+    <span class="badge">Admin Panel</span>
+  </div>
+  <a href="http://sicakrabali.net" target="_blank" class="project-link">View Website →</a>
+</div>
+
+<div class="project-item">
+  <div class="project-header">
+  <img src="https://thumbs2.imgbox.com/1f/4d/Fbg1xzfb_t.jpg?text=LOGO" class="project-logo">
+  <div class="project-title">onegadgetbali.com</div>
+</div>
+  <p>
+  Business website and product catalog with an <strong>admin dashboard</strong>
+  for content and product management.
+  Built using <strong>React</strong> and <strong>Firebase</strong> with responsive design.
+  </p>
+  <div style="margin-top:.5rem">
+    <span class="badge">React</span>
+    <span class="badge">Firebase</span>
+    <span class="badge">Admin Panel</span>
+  </div>
+  <a href="http://onegadgetbali.com" target="_blank" class="project-link">View Website →</a>
+</div>
+
+<div class="project-item">
+  <div class="project-header">
+    <img src="https://thumbs2.imgbox.com/fd/29/O7FvkVQq_t.png?text=LOGO" class="project-logo">
+    <div class="project-title">auroraskyservice.com</div>
+  </div>
+  <p>
+    Business website and <strong>service management system</strong> for legal, visa, and property services. 
+    Built as a <strong>web application</strong> with an integrated admin panel.
+  </p>
+  <div style="margin-top:.5rem">
+    <span class="badge">React</span>
+    <span class="badge">Firebase</span>
+    <span class="badge">Admin Panel</span>
+  </div>
+  <a href="https://auroraskyservice.com" target="_blank" class="project-link">View Website →</a>
+</div>
+</section>
+    
+<section>
+  <h2>Personal Project</h2>
+  <div class="project-item">
+    <div class="project-header">
+      <img src="https://thumbs2.imgbox.com/db/74/K292tHbV_t.png" class="project-logo">
+      <div class="project-title">mojosarihub.com</div>
+    </div>
+    <p>
+      Local business directory platform designed to map economic potential in the Mojosari area.
+    </p>
+    <div style="margin-top:.5rem">
+      <span class="badge">React JS</span>
+      <span class="badge">Firebase</span>
+      <span class="badge badge-accent">Owner</span>
+    </div>
+    <a href="https://mojosarihub.com" target="_blank" class="project-link">View Website →</a>
+  </div>
+</section>
+
+<section>
+  <h2>Showcase (Product MVP)</h2>
+  <div class="project-item">
+    <div class="job-title">RajaOrder — WhatsApp Ordering System</div>
+    <p>
+      Ordering system MVP helping MSMEs receive orders quickly via WhatsApp without additional apps.
+    </p>
+    <div style="margin-top:.5rem">
+      <span class="badge">JavaScript</span>
+      <span class="badge">Firebase</span>
+      <span class="badge badge-accent">MVP</span>
+    </div>
+    <a href="https://raja-kudapan.vercel.app/" target="_blank" class="project-link">User Site →</a> | 
+    <a href="https://admin-mcso.vercel.app/" target="_blank" class="project-link">Admin →</a>
+  </div>
+</section>
+
+<section>
+<h2>Collaboration & Projects</h2>
+<p>
+Open for <strong>freelance</strong> or <strong>project-based</strong> collaborations
+such as business websites, landing pages, or custom web systems.
+</p>
+<div style="margin-top:1.5rem; display:flex; flex-wrap:wrap; gap:12px;">
+  <a href="https://wa.me/6282111887939" target="_blank" class="contact-link">Chat on WhatsApp</a>
+  <a href="mailto:hardinataraja@gmail.com" class="contact-link" style="background:linear-gradient(135deg,#64748b,#334155);">Email Me</a>
+</div>
+</section>
+
+</div>
+
+<footer>
+    © 2024–2026 Musa Ababil — Portfolio
+</footer>
+
+<script>
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add("show"); } });
+},{threshold:0.2});
+sections.forEach(sec=>observer.observe(sec));
+
+const firstNameText = "Musa";
+const lastNameText  = "Ababil";
+const firstEl = document.getElementById("first-name");
+const lastEl  = document.getElementById("last-name");
+let i = 0, j = 0;
+function typeFirst(){ if(i < firstNameText.length){ firstEl.textContent += firstNameText[i]; i++; setTimeout(typeFirst, 120); }else{ setTimeout(typeLast, 400); } }
+function typeLast(){ if(j < lastNameText.length){ lastEl.textContent += lastNameText[j]; j++; setTimeout(typeLast, 140); } }
+window.addEventListener("load", typeFirst);
+</script>
+
+</body>
+</html>

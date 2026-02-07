@@ -274,11 +274,42 @@ footer{
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
+/* LANG TOGGLE STYLE */
+.lang-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    padding: 5px;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    display: flex;
+    gap: 5px;
+}
+.lang-btn {
+    padding: 6px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.3s;
+}
+.lang-btn.active {
+    background: var(--primary);
+    box-shadow: 0 0 15px rgba(0,198,255,0.4);
+}
 
 </style>
 </head>
 
 <body>
+<div class="lang-switch">
+    <a href="index.html" class="lang-btn active">ID</a>
+    <a href="english.html" class="lang-btn">EN</a>
+</div>
 
 <header>
     <img src="https://thumbs2.imgbox.com/09/d2/DZIgpGwZ_t.jpg" class="profile-img" alt="Musa Ababil">
